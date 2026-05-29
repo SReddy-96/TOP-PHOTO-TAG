@@ -11,9 +11,57 @@
   position: absolute;
   width: 40px;
   height: 40px;
-  border: 2px solid red;
-  border-radius: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
-  z-index: 10;
+}
+
+.clickDot {
+  width: 40px;
+  height: 40px;
+  border: 2px solid red;
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.7);
+}
+
+.tagPanel {
+  position: absolute;
+  width: 240px;
+  min-height: 120px;
+  padding: 12px;
+  border: 2px solid red;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  pointer-events: auto;
+  z-index: 9;
+}
+
+.right {
+  left: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.below {
+  left: 50%;
+  top: calc(100% + 12px);
+  transform: translateX(-50%);
+}
+
+.tagForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tagForm label {
+  font-size: 0.95rem;
+}
+
+.tagForm select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
 }

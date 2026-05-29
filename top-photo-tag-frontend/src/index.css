@@ -63,8 +63,3 @@ a {
   color: black;
 }
 
-#image {
-  cursor: crosshair;
-  position: relative;
-  display: inline-block;
-}
