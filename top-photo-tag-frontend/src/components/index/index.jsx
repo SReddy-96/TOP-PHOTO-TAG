@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./index.module.css";
 import clickFunc from "../../assets/clickFunc.jsx";
 import wallyImage from "/images/Wheres-Waldo-Skiing-Super-High-Resolution-scaled.jpg";
@@ -9,6 +9,23 @@ export default function Index() {
     y: null,
     direction: "right",
   });
+
+  // this looks out for other clicks in the document other than the image.
+  useEffect(() => {
+    const handleDocumentClick = (event) => {
+      if (event.target.id !== "image") {
+        setClickPosition({
+          x: null,
+          y: null,
+          direction: "right",
+        });
+      }
+    };
+    document.addEventListener("click", handleDocumentClick);
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    }; // Clean up any existing listeners
+  }, []);
 
   const handleClick = (event) => {
     const position = clickFunc("image", event);
@@ -58,6 +75,7 @@ export default function Index() {
                   <option value="wizard">Wizard</option>
                   <option value="woof">Woof</option>
                 </select>
+                <button type="submit">Tag</button>
               </form>
             </div>
           </div>
