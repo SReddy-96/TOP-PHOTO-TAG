@@ -16,7 +16,9 @@ export default function Index() {
     const formWidth = 240;
     const margin = 16;
     const direction =
-      rect.width - position.x > formWidth + margin ? "right" : "left";
+      rect.width * (position.x / 100) + formWidth + margin > rect.width
+        ? "left"
+        : "right";
 
     setClickPosition({ ...position, direction });
   };
@@ -38,16 +40,14 @@ export default function Index() {
           <div
             className={styles.clickDisplay}
             style={{
-              left: `${clickPosition.x}px`,
-              top: `${clickPosition.y}px`,
+              left: `${clickPosition.x}%`,
+              top: `${clickPosition.y}%`,
             }}
           >
             <div className={styles.clickDot} />
             <div
               className={`${styles.tagPanel} ${
-                clickPosition.direction === "right"
-                  ? styles.right
-                  : styles.left
+                clickPosition.direction === "right" ? styles.right : styles.left
               }`}
             >
               <form action="" id="tagForm" className={styles.tagForm}>
