@@ -16,7 +16,7 @@ export default function Index() {
     const formWidth = 240;
     const margin = 16;
     const direction =
-      rect.width - position.x > formWidth + margin ? "right" : "below";
+      rect.width - position.x > formWidth + margin ? "right" : "left";
 
     setClickPosition({ ...position, direction });
   };
@@ -47,11 +47,10 @@ export default function Index() {
               className={`${styles.tagPanel} ${
                 clickPosition.direction === "right"
                   ? styles.right
-                  : styles.below
+                  : styles.left
               }`}
             >
               <form action="" id="tagForm" className={styles.tagForm}>
-                <label htmlFor="tagName">Tag Name:</label>
                 <select id="tagName" name="tagName">
                   <option value="wally">Wally</option>
                   <option value="wilma">Wilma</option>

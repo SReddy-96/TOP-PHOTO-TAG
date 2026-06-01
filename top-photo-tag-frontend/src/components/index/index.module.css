@@ -25,8 +25,7 @@
 
 .tagPanel {
   position: absolute;
-  width: 240px;
-  min-height: 120px;
+  width: 120px;
   padding: 12px;
   border: 2px solid red;
   border-radius: 12px;
@@ -42,20 +41,16 @@
   transform: translateY(-50%);
 }
 
-.below {
-  left: 50%;
-  top: calc(100% + 12px);
-  transform: translateX(-50%);
+.left {
+  top: 50%;
+  right: calc(100% + 12px);
+  transform: translateY(-50%);
 }
 
 .tagForm {
   display: flex;
   flex-direction: column;
   gap: 8px;
-}
-
-.tagForm label {
-  font-size: 0.95rem;
 }
 
 .tagForm select {
