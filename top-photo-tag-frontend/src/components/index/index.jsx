@@ -10,10 +10,15 @@ export default function Index() {
     direction: "right",
   });
 
-  // this looks out for other clicks in the document other than the image.
+  // this looks out for other clicks in the document other than the image and handling the dropdown form.
   useEffect(() => {
     const handleDocumentClick = (event) => {
-      if (event.target.id !== "image") {
+      const checkTagForm = document.getElementById("tagForm");
+      if (
+        checkTagForm &&
+        event.target.id !== "image" &&
+        !checkTagForm.contains(event.target)
+      ) {
         setClickPosition({
           x: null,
           y: null,
@@ -67,7 +72,15 @@ export default function Index() {
                 clickPosition.direction === "right" ? styles.right : styles.left
               }`}
             >
-              <form action="" id="tagForm" className={styles.tagForm}>
+              <form
+                action=""
+                id="tagForm"
+                className={styles.tagForm}
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setClickPosition({ x: null, y: null, direction: "right" });
+                }}
+              >
                 <select id="tagName" name="tagName">
                   <option value="wally">Wally</option>
                   <option value="wilma">Wilma</option>
