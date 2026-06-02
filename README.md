@@ -18,9 +18,15 @@ This is a photo tagging app using the same idea as the book "Where's Wally". The
 
 ### Database tables
 
-- user (id, name, time)
+- user (id, name, start_time, end-time, score_time)
   - Create
   - Read
-- characters (id, name, screenSize, co-ordinates)
+- characters (id, name, x, y)
   - Create
   - Read (filter by screen size then match co-ordinates)
+- found_character (id, user_id, character_id)
+  - create
+  - Read (find if all the character have been found by the user )
+  SELECT COUNT(*) FROM found_characters WHERE user_id = 1
+  SELECT COUNT(*) FROM characters
+  See if the number of these two queries are the same then stop time or read current time to then take off from the start time.
