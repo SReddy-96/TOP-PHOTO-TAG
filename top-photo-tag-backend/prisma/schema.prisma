@@ -22,7 +22,7 @@ model Character {
 
 model Scores {
   id              Int               @id @default(autoincrement())
-  name            String
+  name            String            @unique @db.VarChar(50)
   start_time      DateTime
   end_time        DateTime
   score_time      Int
