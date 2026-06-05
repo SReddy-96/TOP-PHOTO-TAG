@@ -8,3 +8,18 @@ const checkUserExists = async (name) => {
   });
   return data;
 };
+
+const createUser = async (name, start_time) => {
+  const data = await prisma.Scores.create({
+    data: {
+      name,
+      start_time
+    },
+  });
+  return data;
+};
+
+module.exports={
+  createUser,
+  checkUserExists
+}
