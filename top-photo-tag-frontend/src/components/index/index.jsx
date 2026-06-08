@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import styles from "./index.module.css";
 import clickFunc from "../../assets/clickFunc.jsx";
 import wallyImage from "/images/Wheres-Waldo-Skiing-Super-High-Resolution-scaled.jpg";
@@ -9,6 +10,10 @@ export default function Index() {
     y: null,
     direction: "right",
   });
+
+  // get users id from params
+  const [params] = useSearchParams();
+  const user_id = params.get("id");
 
   // this looks out for other clicks in the document other than the image and handling the dropdown form.
   useEffect(() => {
@@ -41,13 +46,11 @@ export default function Index() {
       rect.width * (position.x / 100) + formWidth + margin > rect.width
         ? "left"
         : "right";
-
     setClickPosition({ ...position, direction });
   };
 
   return (
     <div className={styles.index}>
-      <h1>Welcome to Top Photo Tag!</h1>
       <div className={styles.photoWrapper}>
         <img
           id="image"

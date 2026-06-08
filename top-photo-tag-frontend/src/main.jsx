@@ -7,6 +7,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Index from "./components/index/index.jsx";
 import ErrorPage from "./error-page.jsx";
 import Root from "./components/root/root.jsx";
+import User from "./components/user/user.jsx";
+import Scoreboard from "./components/scoreboard/scoreboard.jsx";
+
+import { action as UserAction } from "./components/user/user.data.js";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +23,16 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
+            element: <User />,
+            action: UserAction
+          },
+          {
+            path: "/game",
             element: <Index />,
+          },
+          {
+            path: "/scoreboard",
+            element: <Scoreboard />,
           },
         ],
       },
