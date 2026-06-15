@@ -30,3 +30,15 @@ This is a photo tagging app using the same idea as the book "Where's Wally". The
   SELECT COUNT(*) FROM found_characters WHERE user_id = 1
   SELECT COUNT(*) FROM characters
   See if the number of these two queries are the same then stop time or read current time to then take off from the start time.
+
+
+wally: 
+  X: 85.2, Y: 73.9
+wilma:
+  X: 48.8, Y: 41.9
+odlaw:
+  X: 31.5, Y: 64.2
+Wizard:
+  X: 7.4, Y: 76.8
+Woof:
+  X: 29.1, Y: 71.6

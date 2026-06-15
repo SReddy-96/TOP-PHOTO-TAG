@@ -10,6 +10,7 @@ const errorHandler = require("./middlewares/errorHandler");
 const IndexRouter = require("./routes/indexRouter");
 const ScoreRouter = require("./routes/scoreRouter");
 const UserRouter = require("./routes/userRouter");
+const CharacterRouter = require("./routes/characterRouter")
 
 const app = express();
 
@@ -41,6 +42,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", IndexRouter);
 app.use("/score", ScoreRouter);
 app.use("/user", UserRouter);
+app.use("/character", CharacterRouter)
 
 // Error handling middleware
 app.use(errorHandler);

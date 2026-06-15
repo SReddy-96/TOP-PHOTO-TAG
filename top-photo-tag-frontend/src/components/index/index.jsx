@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import {
+  useLoaderData,
+  useSearchParams,
+  Form,
+  useActionData,
+} from "react-router-dom";
 import styles from "./index.module.css";
 import clickFunc from "../../assets/clickFunc.jsx";
 import wallyImage from "/images/Wheres-Waldo-Skiing-Super-High-Resolution-scaled.jpg";
@@ -10,6 +15,14 @@ export default function Index() {
     y: null,
     direction: "right",
   });
+  const [submitted, setSubmitted] = useState(false);
+  const [foundCharacters, setFoundCharacters] = useState([]);
+
+  // get characters from loader
+  const characters = useLoaderData();
+
+  // action data from form
+  const actionData = useActionData();
 
   // get users id from params
   const [params] = useSearchParams();
@@ -37,7 +50,9 @@ export default function Index() {
     }; // Clean up any existing listeners
   }, []);
 
+  // handle clicking and styling of dropdown
   const handleClick = (event) => {
+    setSubmitted(false);
     const position = clickFunc("image", event);
     const rect = event.currentTarget.getBoundingClientRect();
     const formWidth = 240;
@@ -48,6 +63,16 @@ export default function Index() {
         : "right";
     setClickPosition({ ...position, direction });
   };
+
+  // handles characters that have been found
+  useEffect(() => {
+    if (actionData?.character_id) {
+      setFoundCharacters((prev) => [
+        ...prev,
+        parseInt(actionData.character_id),
+      ]);
+    }
+  }, [actionData]);
 
   return (
     <div className={styles.index}>
@@ -61,7 +86,7 @@ export default function Index() {
         />
 
         {/* a small dot at the click location with the form panel positioned next to it */}
-        {clickPosition.x !== null && (
+        {clickPosition.x !== null && !submitted && (
           <div
             className={styles.clickDisplay}
             style={{
@@ -75,24 +100,29 @@ export default function Index() {
                 clickPosition.direction === "right" ? styles.right : styles.left
               }`}
             >
-              <form
-                action=""
+              <Form
+                method="post"
                 id="tagForm"
                 className={styles.tagForm}
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setClickPosition({ x: null, y: null, direction: "right" });
-                }}
+                onSubmit={() => setSubmitted(true)}
               >
+                {actionData && actionData.error && (
+                  <div className={styles.error}>{actionData.error}</div>
+                )}
                 <select id="tagName" name="tagName">
-                  <option value="wally">Wally</option>
-                  <option value="wilma">Wilma</option>
-                  <option value="odlaw">Odlaw</option>
-                  <option value="wizard">Wizard</option>
-                  <option value="woof">Woof</option>
+                  {characters
+                    .filter((c) => !foundCharacters.includes(c.id))
+                    .map((character) => (
+                      <option key={character.id} value={character.id}>
+                        {character.name}
+                      </option>
+                    ))}
                 </select>
+                <input type="hidden" name="user_id" value={user_id} />
+                <input type="hidden" name="x" value={clickPosition.x} />
+                <input type="hidden" name="y" value={clickPosition.y} />
                 <button type="submit">Tag</button>
-              </form>
+              </Form>
             </div>
           </div>
         )}

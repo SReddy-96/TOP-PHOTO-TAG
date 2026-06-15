@@ -11,6 +11,10 @@ import User from "./components/user/user.jsx";
 import Scoreboard from "./components/scoreboard/scoreboard.jsx";
 
 import { action as UserAction } from "./components/user/user.data.js";
+import {
+  loader as gameLoader,
+  action as gameAction,
+} from "./components/index/index.data.js";
 
 const router = createBrowserRouter([
   {
@@ -24,11 +28,13 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <User />,
-            action: UserAction
+            action: UserAction,
           },
           {
             path: "/game",
             element: <Index />,
+            loader: gameLoader,
+            action: gameAction,
           },
           {
             path: "/scoreboard",

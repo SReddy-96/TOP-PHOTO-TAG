@@ -13,13 +13,66 @@ const createUser = async (name, start_time) => {
   const data = await prisma.Scores.create({
     data: {
       name,
-      start_time
+      start_time,
     },
   });
   return data;
 };
 
-module.exports={
+const getAllCharacters = async () => {
+  const data = await prisma.character.findMany({
+    select: {
+      id: true,
+      name: true,
+    },
+  });
+  return data;
+};
+
+const findCharacterById = async (character_id) => {
+  const data = await prisma.character.findUnique({
+    where: {
+      id: character_id,
+    },
+  });
+  return data;
+};
+
+const findUserById = async (user_id) => {
+  const data = await prisma.Scores.findUnique({
+    where: {
+      id: user_id,
+    },
+  });
+  return data;
+};
+
+const foundCharacter = async (userId, characterId) => {
+  const data = await prisma.found_character.create({
+    data: {
+      userId,
+      characterId,
+    },
+  });
+  return data;
+};
+
+// give the amount of characters found
+const foundCharacterAmount = async (userId) => {
+  const data = await prisma.found_character.count({
+    where: {
+      userId,
+    },
+  });
+  return data;
+};
+
+module.exports = {
   createUser,
-  checkUserExists
-}
+  checkUserExists,
+  getAllCharacters,
+  findCharacterById,
+  findUserById,
+  foundCharacter,
+  foundCharacterAmount,
+};
