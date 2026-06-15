@@ -1,3 +1,5 @@
+import { redirect } from "react-router-dom";
+
 export async function loader() {
   try {
     const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/character`, {
@@ -49,9 +51,12 @@ export async function action({ request }) {
           : "Failed to start game. Please try again.",
       };
     }
-
-    // Return the data or redirect
-    return res.json()
+    const data = await res.json();
+    if (data.status === "all found") {
+      return redirect("/scoreboard");
+    } else {
+      return data;
+    }
   } catch (error) {
     console.error("user error:", error);
     throw error;

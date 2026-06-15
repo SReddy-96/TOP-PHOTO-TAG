@@ -76,6 +76,17 @@ export default function Index() {
 
   return (
     <div className={styles.index}>
+      {actionData?.status == "found" && (
+        <span>
+          {
+            characters.find(
+              (character) => character.id === parseInt(actionData.character_id),
+            ).name
+          }{" "}
+          Found
+        </span>
+      )}
+      {actionData?.status == "not found" && <span>Not Found</span>}
       <div className={styles.photoWrapper}>
         <img
           id="image"

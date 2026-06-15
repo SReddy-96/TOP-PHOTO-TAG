@@ -67,6 +67,20 @@ const foundCharacterAmount = async (userId) => {
   return data;
 };
 
+// add end_time and score
+const addScore = async (id, end_time, score_time) => {
+  const data = await prisma.Scores.update({
+    where: {
+      id,
+    },
+    data: {
+      end_time,
+      score_time,
+    },
+  });
+  return data;
+};
+
 module.exports = {
   createUser,
   checkUserExists,
@@ -75,4 +89,5 @@ module.exports = {
   findUserById,
   foundCharacter,
   foundCharacterAmount,
+  addScore
 };

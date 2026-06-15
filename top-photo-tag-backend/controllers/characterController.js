@@ -15,6 +15,7 @@ const postCharacter = async (req, res, next) => {
   try {
     const { user_id, character_id, x, y } = req.body;
     const character = await db.findCharacterById(parseInt(character_id));
+    const user = await db.findUserById(parseInt(user_id));
 
     // check if x and y are within range
     if (
@@ -28,14 +29,18 @@ const postCharacter = async (req, res, next) => {
       const charactersFound = await db.foundCharacterAmount(parseInt(user_id));
       if (charactersFound === parseInt(process.env.AMOUNT_OF_CHARACTERS)) {
         // redirect to scoreboard, all characters found and take end time and work out score
-        res.json("finished");
+        const end_time = new Date();
+        const score_time = Math.floor((end_time - user.start_time) / 1000);
+        // add end_time and score
+        await db.addScore(user.id, end_time, score_time);
+        res.json({ status: "all found" });
       } else {
         // carry on game but need to update dropdown like a rerender
         res.json({ status: "found", character_id: character_id });
       }
     } else {
       // this is where they fail
-      res.json("failed");
+      res.json({ status: "not found" });
     }
   } catch (err) {
     err.statusCode = err.statusCode || 500;
