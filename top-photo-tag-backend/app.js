@@ -40,7 +40,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/", IndexRouter);
-app.use("/score", ScoreRouter);
+app.use("/scoreboard", ScoreRouter);
 app.use("/user", UserRouter);
 app.use("/character", CharacterRouter)
 

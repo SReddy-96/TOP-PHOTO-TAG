@@ -1,9 +1,8 @@
 const { Router } = require("express");
+const { getScoreboard } = require("../controllers/scoreController.js");
 
 const scoreRouter = Router();
 
-scoreRouter.get("/", (req, res) => {
-  res.json({ msg: "hello score" });
-});
+scoreRouter.get("/", getScoreboard);
 
 module.exports = scoreRouter;

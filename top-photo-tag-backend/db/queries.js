@@ -81,6 +81,17 @@ const addScore = async (id, end_time, score_time) => {
   return data;
 };
 
+// scoreboard
+const getAllScoreboard = async () => {
+  const data = await prisma.Scores.findMany({
+    select: {
+      name: true,
+      score_time: true,
+    },
+  });
+  return data;
+};
+
 module.exports = {
   createUser,
   checkUserExists,
@@ -89,5 +100,6 @@ module.exports = {
   findUserById,
   foundCharacter,
   foundCharacterAmount,
-  addScore
+  addScore,
+  getAllScoreboard,
 };

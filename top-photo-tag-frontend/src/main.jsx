@@ -15,6 +15,7 @@ import {
   loader as gameLoader,
   action as gameAction,
 } from "./components/index/index.data.js";
+import { loader as scoreboardLoader } from "./components/scoreboard/scoreboard.data.js";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,7 @@ const router = createBrowserRouter([
           {
             path: "/scoreboard",
             element: <Scoreboard />,
+            loader: scoreboardLoader,
           },
         ],
       },

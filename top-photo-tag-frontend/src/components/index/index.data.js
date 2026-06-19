@@ -58,7 +58,7 @@ export async function action({ request }) {
       return data;
     }
   } catch (error) {
-    console.error("user error:", error);
+    console.error("character error:", error);
     throw error;
   }
 }
