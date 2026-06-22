@@ -33,7 +33,7 @@ const postCharacter = async (req, res, next) => {
         const score_time = Math.floor((end_time - user.start_time) / 1000);
         // add end_time and score
         await db.addScore(user.id, end_time, score_time);
-        res.json({ status: "all found" });
+        res.json({ status: "all found", user_id: user_id });
       } else {
         // carry on game but need to update dropdown like a rerender
         res.json({ status: "found", character_id: character_id });

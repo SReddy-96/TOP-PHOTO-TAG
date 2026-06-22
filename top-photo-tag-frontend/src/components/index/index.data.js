@@ -53,7 +53,7 @@ export async function action({ request }) {
     }
     const data = await res.json();
     if (data.status === "all found") {
-      return redirect("/scoreboard");
+      return redirect(`/scoreboard?id=${data.user_id}`);
     } else {
       return data;
     }
