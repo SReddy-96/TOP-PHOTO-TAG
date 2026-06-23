@@ -23,7 +23,7 @@ export default function Scoreboard() {
             <tr key={index}>
               <td>{index + 1}</td>
               <td>{score.name}</td>
-              <td>{score.score_time}</td>
+              <td>{score.score_time} seconds</td>
             </tr>
           ))}
         </tbody>

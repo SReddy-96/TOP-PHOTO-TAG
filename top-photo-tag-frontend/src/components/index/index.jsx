@@ -76,15 +76,20 @@ export default function Index() {
 
   return (
     <div className={styles.index}>
+      {!actionData && (
+        <p className={styles.foundCharacters}>
+          Click to find Wally and his Friends
+        </p>
+      )}
       {actionData?.status == "found" && (
-        <span>
+        <p className={styles.foundCharacters}>
           {
             characters.find(
               (character) => character.id === parseInt(actionData.character_id),
             ).name
           }{" "}
           Found
-        </span>
+        </p>
       )}
       {actionData?.status == "not found" && <span>Not Found</span>}
       <div className={styles.photoWrapper}>

@@ -5,7 +5,7 @@ export default function Nav() {
   return (
     <nav className={styles.nav}>
       <NavLink to={"/"} className={styles.navTitle}>
-        PhotoTag
+        Photo-Tag
       </NavLink>
     </nav>
   );

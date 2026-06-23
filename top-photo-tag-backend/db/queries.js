@@ -84,6 +84,12 @@ const addScore = async (id, end_time, score_time) => {
 // scoreboard
 const getAllScoreboard = async () => {
   const data = await prisma.Scores.findMany({
+    where: {
+      score_time: {
+        not: null,
+        gt: 0,
+      },
+    },
     orderBy: {
       score_time: "asc",
     },
