@@ -1,5 +1,9 @@
 .index {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8f5eb;
 }
 
 .photoWrapper {
@@ -79,4 +83,7 @@
 
 .foundCharacters {
   margin: 2rem;
+  padding: 1rem;
+  border: medium dashed red;
+  width: fit-content;
 }

@@ -1,0 +1,103 @@
+.scoreboardWrapper {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f8f5eb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.scoreboardWrapper h1 {
+  margin: 0 0 2rem;
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 900;
+  line-height: 0.9;
+  color: #e53935;
+  text-transform: uppercase;
+  text-shadow:
+    2px 2px 0 white,
+    4px 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+.userScore {
+  background: white;
+  border: 2px solid #d7d7d7;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.userScore p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  color: #222;
+  font-weight: 600;
+}
+
+.userScore p:first-child {
+  font-size: 1.3rem;
+  color: #e53935;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+}
+
+.scoreboardTable {
+  width: 100%;
+  max-width: 600px;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.15),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.scoreboardTable thead {
+  background: #0d6efd;
+  color: white;
+}
+
+.scoreboardTable thead tr {
+  border: none;
+}
+
+.scoreboardTable thead th {
+  padding: 1.2rem;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.scoreboardTable tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s ease;
+}
+
+.scoreboardTable tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+.scoreboardTable tbody tr:last-child {
+  border-bottom: none;
+}
+
+.scoreboardTable tbody td {
+  padding: 1rem 1.2rem;
+  font-size: 0.95rem;
+  color: #222;
+}
+
+.scoreboardTable tbody tr td:first-child {
+  font-weight: 700;
+  color: #e53935;
+}

@@ -91,7 +91,9 @@ export default function Index() {
           Found
         </p>
       )}
-      {actionData?.status == "not found" && <span>Not Found</span>}
+      {actionData?.status == "not found" && (
+        <p className={styles.foundCharacters}>Not Found</p>
+      )}
       <div className={styles.photoWrapper}>
         <img
           id="image"
