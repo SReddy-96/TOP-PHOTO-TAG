@@ -2,7 +2,7 @@
   min-height: 100vh;
   width: 100%;
 
-  background-image: url("./images/wally-landing.png");
+  background-image: url("/images/wally-landing.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
