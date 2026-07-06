@@ -6,6 +6,7 @@ This is a photo tagging app using the same idea as the book "Where's Wally". The
 
 ## Preview
 
+[Walkthrough](https://youtu.be/5J-f95DTRos)
 
 ## Features
 
